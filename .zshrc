@@ -8,10 +8,10 @@ fi
 # Antigen zsh plugin manager
 source /usr/local/share/antigen/antigen.zsh
 
-# Load the oh-my-zsh's library.
+# Antigen load oh-my-zsh library
 antigen use oh-my-zsh
 
-# plugins with oh-my-zsh
+# Antigen oh-my-zsh plugins
 antigen bundle history
 antigen bundle kubectl
 antigen bundle macos
@@ -19,19 +19,22 @@ antigen bundle macos
 # antigen bundle poetry-env  # auto-load venv when cd-ing into dir with pyproject.toml
 # antigen bundle ssh-agent  # auto-start ssh-agent
 
-# external plugins
+# Antigen external plugins
 antigen bundle zsh-users/zsh-autosuggestions
 # antigen bundle desyncr/auto-ls
 antigen bundle zsh-users/zsh-syntax-highlighting # must be last plugin to get effect
 
-# theme
+# Antigen theme
 antigen theme romkatv/powerlevel10k
 
-# apply config
+# Antigen apply
 antigen apply
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Kubeconfig
+export KUBECONFIG=~/.kube/config:$(find ~/.kube/*.kubeconfig -type f | tr '\n' ':')
 
 # Aliases
 alias ls='exa --oneline --group-directories-first'
