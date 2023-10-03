@@ -41,7 +41,9 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 alias ls='exa --oneline --group-directories-first'
 alias la='exa --all --long --header --group-directories-first --git --time-style long-iso'
-# alias k='kubectl'
-alias kc='kubectx'
-alias kn='kubens'
+# Kubectl -------------------------------------------------
+# alias k="kubectl"
+alias kc="kubectx"
+alias kn="kubens"
+export KUBECONFIG=~/.kube/config:$(find ~/.kube/*.kubeconfig -type f | tr '\n' ':')
 alias buuc='brew update && brew upgrade && brew cleanup'
