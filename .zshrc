@@ -33,10 +33,12 @@ antigen apply
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Kubeconfig
-export KUBECONFIG=~/.kube/config:$(find ~/.kube/*.kubeconfig -type f | tr '\n' ':')
+# GCP -----------------------------------------------------
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
-# Aliases
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 alias ls='exa --oneline --group-directories-first'
 alias la='exa --all --long --header --group-directories-first --git --time-style long-iso'
 # alias k='kubectl'
