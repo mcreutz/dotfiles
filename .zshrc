@@ -5,8 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Antigen zsh plugin manager
-source /usr/local/share/antigen/antigen.zsh
+# Antigen -------------------------------------------------
+# Zsh plugin manager
+source $(brew --prefix)/share/antigen/antigen.zsh
 
 # Antigen load oh-my-zsh library
 antigen use oh-my-zsh
