@@ -47,3 +47,7 @@ alias kc="kubectx"
 alias kn="kubens"
 export KUBECONFIG=~/.kube/config:$(find ~/.kube/*.kubeconfig -type f | tr '\n' ':')
 alias buuc='brew update && brew upgrade && brew cleanup'
+# Bat -----------------------------------------------------
+export BAT_THEME="Dracula"
+export BAT_PAGING="always"
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain --paging=always'
