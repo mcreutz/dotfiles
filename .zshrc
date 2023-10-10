@@ -60,4 +60,6 @@ alias buuc='brew update && brew upgrade && brew cleanup'
 # Bat -----------------------------------------------------
 export BAT_THEME="Dracula"
 export BAT_PAGING="always"
+
+# Highlight --help texts
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain --paging=always'
