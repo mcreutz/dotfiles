@@ -49,12 +49,14 @@ alias ls='exa --oneline --group-directories-first'
 alias la='exa --all --long --header --group-directories-first --git --time-style long-iso'
 
 # Kubectl -------------------------------------------------
-# alias k="kubectl"
-alias kc="kubectx"
-alias kn="kubens"
 export KUBECONFIG=~/.kube/config:$(find ~/.kube/*.kubeconfig -type f | tr '\n' ':')
 
+# Krew -------------------------------------------------
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # Kubectx -------------------------------------------------
+alias kc="kubectx"
+alias kn="kubens"
 alias knu="kubectl config unset contexts.$(kubectl config current-context).namespace"
 
 # Brew ----------------------------------------------------
