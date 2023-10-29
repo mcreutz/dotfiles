@@ -54,6 +54,9 @@ alias kc="kubectx"
 alias kn="kubens"
 export KUBECONFIG=~/.kube/config:$(find ~/.kube/*.kubeconfig -type f | tr '\n' ':')
 
+# Kubectx -------------------------------------------------
+alias knu="kubectl config unset contexts.$(kubectl config current-context).namespace"
+
 # Brew ----------------------------------------------------
 alias buuc='brew update && brew upgrade && brew cleanup'
 
