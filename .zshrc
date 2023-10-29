@@ -58,7 +58,7 @@ export KUBECONFIG=~/.kube/config:$(find ~/.kube/*.kubeconfig -type f | tr '\n' '
 alias knu="kubectl config unset contexts.$(kubectl config current-context).namespace"
 
 # Brew ----------------------------------------------------
-alias buuc='brew update && brew upgrade && brew cleanup'
+alias buu='brew update && brew upgrade && brew autoremove && brew cleanup'
 
 # Bat -----------------------------------------------------
 export BAT_THEME="Dracula"
