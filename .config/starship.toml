@@ -1,0 +1,58 @@
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$directory\
+$vcsh\
+$fossil_branch\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$package\
+$golang\
+$guix_shell\
+$helm\
+$java\
+$gradle\
+$nodejs\
+$terraform\
+$nix_shell\
+$conda\
+$aws\
+$gcloud\
+$azure\
+$env_var\
+$custom\
+$sudo\
+$cmd_duration\
+$fill\
+$python\
+$kubernetes\
+$line_break\
+$jobs\
+$status\
+$os\
+$container\
+$shell\
+$character"""
+
+[fill]
+symbol = '─'
+style =  '236'
+
+[gcloud]
+disabled = true
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
+
+[package]
+disabled = true
+
+[directory]
+truncate_to_repo = false
