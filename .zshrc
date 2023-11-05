@@ -75,3 +75,5 @@ alias mp="multipass"
 # Fzf -----------------------------------------------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Poetry -----------------------------------------------------
+alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"
