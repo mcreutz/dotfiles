@@ -10,7 +10,6 @@ fi
 # Zsh plugin manager
 source $(brew --prefix)/share/antigen/antigen.zsh
 
-
 # Load oh-my-zsh library
 antigen use oh-my-zsh
 
@@ -46,7 +45,7 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 
 # Exa -----------------------------------------------------
 alias ls='exa --oneline --group-directories-first'
-alias la='exa --all --long --header --group-directories-first --git --time-style long-iso'
+alias la='exa --all --all --long --header --group-directories-first --git --time-style long-iso'
 
 # Kubectl -------------------------------------------------
 export KUBECONFIG=~/.kube/config:$(find ~/.kube/*.kubeconfig -type f | tr '\n' ':')
