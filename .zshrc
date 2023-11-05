@@ -54,8 +54,9 @@ export KUBECONFIG=~/.kube/config:$(find ~/.kube/*.kubeconfig -type f | tr '\n' '
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Kubectx -------------------------------------------------
-alias kc="kubectx"
-alias kn="kubens"
+alias kc="kubectx | fzf | xargs kubectx"
+alias kcu="kubectx --unset"
+alias kn="kubens | fzf | xargs kubens"
 alias knu="kubectl config unset contexts.$(kubectl config current-context).namespace"
 
 # Brew ----------------------------------------------------
@@ -70,3 +71,7 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain --paging=alw
 
 # Multipass -----------------------------------------------------
 alias mp="multipass"
+
+# Fzf -----------------------------------------------------
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
