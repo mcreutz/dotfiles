@@ -41,7 +41,7 @@ $shell\
 $character"""
 
 [fill]
-symbol = '─'
+symbol = '─'  # not a hyphen but a box-drawing character
 style =  '236'
 
 [gcloud]
