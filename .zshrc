@@ -6,6 +6,10 @@
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
+# Brew completions ---------------------------------------
+# Must be before oh-my-zsh.sh
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
 # Antigen -------------------------------------------------
 # Zsh plugin manager
 source $(brew --prefix)/share/antigen/antigen.zsh
