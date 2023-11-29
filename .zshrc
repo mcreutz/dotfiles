@@ -53,10 +53,8 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Kubectx -------------------------------------------------
 alias kc=kubectx
-alias kcf="kubectx | fzf | xargs kubectx"  # use fzf for selection
 alias kcu="kubectx --unset"
 alias kn=kubens
-alias knf="kubens | fzf | xargs kubens"  # use fzf for selection
 alias knu="kubectl config unset contexts.$(kubectl config current-context).namespace"  # unset
 
 # Brew ----------------------------------------------------
