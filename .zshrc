@@ -47,6 +47,7 @@ alias la='exa --all --all --long --header --group-directories-first --git --time
 
 # Kubectl -------------------------------------------------
 export KUBECONFIG=~/.kube/config:$(find ~/.kube/*.kubeconfig -type f | tr '\n' ':')
+# Important! Files will be merged! Names of different users, clusters and contexts must be unique over all files!
 
 # Krew -------------------------------------------------
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
