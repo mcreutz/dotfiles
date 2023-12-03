@@ -1,11 +1,3 @@
-# P10k ----------------------------------------------------
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 # Brew completions ---------------------------------------
 # Must be before oh-my-zsh.sh
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -26,14 +18,8 @@ antigen bundle macos
 antigen bundle zsh-users/zsh-autosuggestions
 # antigen bundle desyncr/auto-ls
 antigen bundle zsh-users/zsh-syntax-highlighting  # must be last plugin
-# Theme
-# antigen theme romkatv/powerlevel10k
 # Apply
 antigen apply
-
-# P10k ----------------------------------------------------
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # GCP -----------------------------------------------------
 # The next line updates PATH for the Google Cloud SDK.
