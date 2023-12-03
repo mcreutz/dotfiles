@@ -15,10 +15,6 @@ $docker_context\
 $package\
 $golang\
 $guix_shell\
-$helm\
-$java\
-$gradle\
-$nodejs\
 $terraform\
 $nix_shell\
 $conda\
@@ -47,6 +43,9 @@ $character\
 [fill]
 symbol = '─'  # not a hyphen but a box-drawing character
 style =  '236'
+
+[aws]
+disabled = true
 
 [gcloud]
 disabled = true
