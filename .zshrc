@@ -35,7 +35,7 @@ alias la='exa --all --all --long --header --group-directories-first --git --time
 # Assumption is, that each context has its own .kubeconfig file.
 # When minikube creates a 'config' file, check that it contains nothing else and rename it to 'minikube.kubeconfig'
 # Select context with fzf (~/.kube/*.kubeconfig files)
-alias kc='export KUBECONFIG=~/.kube/$(find .kube/*.kubeconfig -type f -exec basename {} .kubeconfig "'";"'" | fzf).kubeconfig'
+alias kc='export KUBECONFIG=~/.kube/$(find ~/.kube/*.kubeconfig -type f -exec basename {} .kubeconfig "'";"'" | fzf).kubeconfig'
 alias kcu="export KUBECONFIG=\"\""  # unset
 # Select default namespace with fzf
 alias kn='kubectl config set-context --current --namespace=$(kubectl get ns --no-headers -o custom-columns=":metadata.name" | fzf)'
