@@ -38,7 +38,11 @@ $status\
 $os\
 $container\
 $shell\
-$character"""
+$character\
+"""  
+# '$fill' moves following elements to the right and fills the space
+# '$line_break' adds a line break
+# '$character' displays the actual prompt character
 
 [fill]
 symbol = '─'  # not a hyphen but a box-drawing character
