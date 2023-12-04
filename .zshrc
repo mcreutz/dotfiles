@@ -41,6 +41,9 @@ alias kcu="export KUBECONFIG=\"\""  # unset
 alias kn='kubectl config set-context --current --namespace=$(kubectl get ns --no-headers -o custom-columns=":metadata.name" | fzf)'
 alias knu="kubectl config set-context --current --namespace=\"\""  # unset
 
+# Krew -------------------------------------------------
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # Brew ----------------------------------------------------
 alias buu='brew update && brew upgrade && brew autoremove && brew cleanup'
 
