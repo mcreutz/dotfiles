@@ -64,3 +64,6 @@ alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"  # list all environments
 
 # Starship -----------------------------------------------------
 eval "$(starship init zsh)"  # should be at the end
+
+# git -----------------------------------------------------
+alias gs='git switch $(git branch | fzf)'
