@@ -45,6 +45,7 @@ alias knu="kubectl config set-context --current --namespace=\"\""  # unset
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Brew ----------------------------------------------------
+# update and upgrade
 alias buu='brew update && brew upgrade && brew autoremove && brew cleanup'
 
 # Bat -----------------------------------------------------
@@ -60,10 +61,16 @@ alias mp="multipass"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Poetry -----------------------------------------------------
-alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"  # list all environments
+# list all environments
+alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"
 
 # Starship -----------------------------------------------------
 eval "$(starship init zsh)"  # should be at the end
 
 # git -----------------------------------------------------
+# git switch with fzf
 alias gs='git switch $(git branch | fzf)'
+
+# ssh -----------------------------------------------------
+# connect to server with fzf
+alias sshc="sed -n '/^Host /s/^Host \([^*]*\).*$/\1/p' $HOME/.ssh/config | fzf | xargs -I {} ssh -tt {}"
