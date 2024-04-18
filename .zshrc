@@ -1,3 +1,6 @@
+# Add ~/.local/bin to PATH
+export PATH="$HOME/.local/bin:$PATH"
+
 # Brew completions ---------------------------------------
 # Must be before oh-my-zsh.sh
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
