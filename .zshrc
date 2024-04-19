@@ -61,7 +61,8 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain --paging=alw
 alias mp="multipass"
 
 # Fzf -----------------------------------------------------
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# run '$(brew --prefix)/opt/fzf/install' after fzf installation to enable fzf autocompletion
+eval "$(fzf --zsh)"
 
 # Poetry -----------------------------------------------------
 # list all environments
