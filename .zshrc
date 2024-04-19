@@ -73,7 +73,3 @@ eval "$(starship init zsh)"  # should be at the end
 # git -----------------------------------------------------
 # git switch with fzf
 alias gs='git switch $(git branch | fzf)'
-
-# ssh -----------------------------------------------------
-# connect to server with fzf (needs a 'Ctrl-C' after exiting connection)
-alias sshc="sed -n '/^Host /s/^Host \([^*]*\).*$/\1/p' $HOME/.ssh/config | fzf | xargs -I {} ssh -tt {}"
