@@ -30,6 +30,15 @@ if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
+# Fzf -----------------------------------------------------
+# run '$(brew --prefix)/opt/fzf/install' after fzf installation to enable fzf autocompletion
+eval "$(fzf --zsh)"
+
+# Krew -------------------------------------------------
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+
+
 # Exa -----------------------------------------------------
 alias ls='exa --oneline --group-directories-first'
 alias la='exa --all --all --long --header --group-directories-first --git --time-style long-iso'
@@ -44,9 +53,6 @@ alias kcu="export KUBECONFIG=\"\""  # unset
 alias kn='kubectl config set-context --current --namespace=$(kubectl get ns --no-headers -o custom-columns=":metadata.name" | fzf)'
 alias knu="kubectl config set-context --current --namespace=\"\""  # unset
 
-# Krew -------------------------------------------------
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
 # Brew ----------------------------------------------------
 # update and upgrade
 alias buu='brew update && brew upgrade && brew autoremove && brew cleanup'
@@ -60,17 +66,15 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain --paging=alw
 # Multipass -----------------------------------------------------
 alias mp="multipass"
 
-# Fzf -----------------------------------------------------
-# run '$(brew --prefix)/opt/fzf/install' after fzf installation to enable fzf autocompletion
-eval "$(fzf --zsh)"
-
 # Poetry -----------------------------------------------------
 # list all environments
 alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"
 
-# Starship -----------------------------------------------------
-eval "$(starship init zsh)"  # should be at the end
-
 # git -----------------------------------------------------
 # git switch with fzf
 alias gs='git switch $(git branch | fzf)'
+
+
+
+# Starship -----------------------------------------------------
+eval "$(starship init zsh)"  # should be at the end
