@@ -1,8 +1,8 @@
 {
-    "title": "capslock + ijkl to arrow keys",
+    "title": "capslock layer, ijkl to arrow keys, zn to brackets",
     "rules": [
         {
-            "description": "Change Caps Lock + I/J/K/L to Arrow Keys",
+            "description": "Change Caps Lock + I/J/K/L to Arrow Keys, + Z/N to brackets",
             "manipulators": [
                 {
                     "from": {
@@ -16,7 +16,7 @@
                     "to": [
                         {
                             "set_variable": {
-                                "name": "caps_arrows_mode",
+                                "name": "capslock_layer_active",
                                 "value": 1
                             }
                         }
@@ -24,7 +24,7 @@
                     "to_after_key_up": [
                         {
                             "set_variable": {
-                                "name": "caps_arrows_mode",
+                                "name": "capslock_layer_active",
                                 "value": 0
                             }
                         }
@@ -34,8 +34,8 @@
                 {
                     "conditions": [
                         {
-                            "name": "caps_arrows_mode",
                             "type": "variable_if",
+                            "name": "capslock_layer_active",
                             "value": 1
                         }
                     ],
@@ -57,8 +57,8 @@
                 {
                     "conditions": [
                         {
-                            "name": "caps_arrows_mode",
                             "type": "variable_if",
+                            "name": "capslock_layer_active",
                             "value": 1
                         }
                     ],
@@ -80,8 +80,8 @@
                 {
                     "conditions": [
                         {
-                            "name": "caps_arrows_mode",
                             "type": "variable_if",
+                            "name": "capslock_layer_active",
                             "value": 1
                         }
                     ],
@@ -103,8 +103,8 @@
                 {
                     "conditions": [
                         {
-                            "name": "caps_arrows_mode",
                             "type": "variable_if",
+                            "name": "capslock_layer_active",
                             "value": 1
                         }
                     ],
@@ -119,6 +119,97 @@
                     "to": [
                         {
                             "key_code": "right_arrow"
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslock_layer_active",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "y"
+                    },
+                    "to": [
+                        {
+                            "key_code": "5",
+                            "modifiers": [
+                                "left_option"
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslock_layer_active",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "y",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "6",
+                            "modifiers": [
+                                "left_option"
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslock_layer_active",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "n"
+                    },
+                    "to": [
+                        {
+                            "key_code": "grave_accent_and_tilde"
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslock_layer_active",
+                            "value": 1
+                        }
+                    ],
+                    "from": {
+                        "key_code": "n",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_shift"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "grave_accent_and_tilde",
+                            "modifiers": [
+                                "left_shift"
+                            ]
                         }
                     ],
                     "type": "basic"
