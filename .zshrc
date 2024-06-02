@@ -39,6 +39,9 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 
 
+# History -----------------------------------------------------
+alias history="history -i"  # add timestamps to output
+
 # Exa -----------------------------------------------------
 alias ls='exa --oneline --group-directories-first'
 alias la='exa --all --all --long --header --group-directories-first --git --time-style long-iso'
@@ -77,4 +80,4 @@ alias gs='git switch $(git branch | fzf)'
 
 
 # Starship -----------------------------------------------------
-eval "$(starship init zsh)"  # should be at the end
+eval "$(starship init zsh)"  # should be at the end of the file
