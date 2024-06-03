@@ -47,6 +47,9 @@ alias ls='exa --oneline --group-directories-first'
 alias la='exa --all --all --long --header --group-directories-first --git --time-style long-iso'
 
 # Kubectl -------------------------------------------------
+# Autocompletion
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+# Aliases
 # Assumption is, that each context has its own .kubeconfig file.
 # When minikube creates a 'config' file, check that it contains nothing else and rename it to 'minikube.kubeconfig'
 # Select context with fzf (~/.kube/*.kubeconfig files)
