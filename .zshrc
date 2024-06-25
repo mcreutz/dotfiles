@@ -42,9 +42,9 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # History -----------------------------------------------------
 alias history="history -i"  # add timestamps to output
 
-# Exa -----------------------------------------------------
-alias ls='exa --oneline --group-directories-first'
-alias la='exa --all --all --long --header --group-directories-first --git --time-style long-iso'
+# Eza -----------------------------------------------------
+alias ls='eza --oneline --group-directories-first'
+alias la='eza --all --all --long --header --group-directories-first --git --time-style long-iso'
 
 # Kubectl -------------------------------------------------
 # Autocompletion
