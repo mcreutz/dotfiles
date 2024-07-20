@@ -32,12 +32,10 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 
 # Fzf -----------------------------------------------------
 # run '$(brew --prefix)/opt/fzf/install' after fzf installation to enable fzf autocompletion
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
 
 # Krew -------------------------------------------------
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-
 
 # History -----------------------------------------------------
 alias history="history -i"  # add timestamps to output
