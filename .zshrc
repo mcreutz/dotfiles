@@ -65,7 +65,7 @@ alias buu='brew update && brew upgrade && brew autoremove && brew cleanup'
 export BAT_THEME="Dracula"
 export BAT_PAGING="always"
 # Highlight --help texts
-alias -g -- --help='--help 2>&1 | bat --language=help --style=plain --paging=always'
+# alias -g -- --help='--help 2>&1 | bat --language=help --style=plain --paging=always'
 
 # Multipass -----------------------------------------------------
 alias mp="multipass"
@@ -78,7 +78,10 @@ alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"
 # git switch with fzf
 alias gs='git switch $(git branch | fzf)'
 
-
+# Github CLI -----------------------------------------------------
+eval "$(gh copilot alias -- zsh)"
 
 # Starship -----------------------------------------------------
 eval "$(starship init zsh)"  # should be at the end of the file
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/martin/.cache/lm-studio/bin"
