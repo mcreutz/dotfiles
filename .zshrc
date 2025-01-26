@@ -34,9 +34,6 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 # run '$(brew --prefix)/opt/fzf/install' after fzf installation to enable fzf autocompletion
 source <(fzf --zsh)
 
-# Krew -------------------------------------------------
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
 # History -----------------------------------------------------
 alias history="history -i"  # add timestamps to output
 
@@ -81,7 +78,10 @@ alias gs='git switch $(git branch | fzf)'
 # Github CLI -----------------------------------------------------
 eval "$(gh copilot alias -- zsh)"
 
+# Added by LM Studio CLI (lms) -----------------------------------------------------
+export PATH="$PATH:/Users/martin/.cache/lm-studio/bin"
+
+
 # Starship -----------------------------------------------------
 eval "$(starship init zsh)"  # should be at the end of the file
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/martin/.cache/lm-studio/bin"
+
