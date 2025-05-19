@@ -80,8 +80,8 @@ eval "$(gh copilot alias -- zsh)"
 
 # Added by LM Studio CLI (lms) -----------------------------------------------------
 export PATH="$PATH:/Users/martin/.cache/lm-studio/bin"
+export PATH="$PATH:/Users/martin/.lmstudio/bin"
 
 
 # Starship -----------------------------------------------------
 eval "$(starship init zsh)"  # should be at the end of the file
-
