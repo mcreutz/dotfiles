@@ -75,9 +75,6 @@ alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"
 # git switch with fzf
 alias gs='git switch $(git branch | fzf)'
 
-# Github CLI -----------------------------------------------------
-eval "$(gh copilot alias -- zsh)"
-
 # Added by LM Studio CLI (lms) -----------------------------------------------------
 export PATH="$PATH:/Users/martin/.cache/lm-studio/bin"
 export PATH="$PATH:/Users/martin/.lmstudio/bin"
