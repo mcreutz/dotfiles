@@ -79,6 +79,15 @@ alias gs='git switch $(git branch | fzf)'
 export PATH="$PATH:/Users/martin/.cache/lm-studio/bin"
 export PATH="$PATH:/Users/martin/.lmstudio/bin"
 
-
 # Starship -----------------------------------------------------
 eval "$(starship init zsh)"  # should be at the end of the file
+
+# Added by bun -----------------------------------------------------
+# completions
+[ -s "/Users/martin/.bun/_bun" ] && source "/Users/martin/.bun/_bun"
+
+# path
+if [ -d "$HOME/.bun" ]; then
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+fi
