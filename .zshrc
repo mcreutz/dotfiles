@@ -75,6 +75,11 @@ alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"
 # git switch with fzf
 alias gs='git switch $(git branch | fzf)'
 
+# devcontainers -----------------------------------------------------
+alias dcu='devcontainer up'
+alias dcur='devcontainer up --remove-existing-container --build-no-cache'
+alias dcec='devcontainer exec claude'
+
 # Added by LM Studio CLI (lms) -----------------------------------------------------
 export PATH="$PATH:/Users/martin/.cache/lm-studio/bin"
 export PATH="$PATH:/Users/martin/.lmstudio/bin"
