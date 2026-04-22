@@ -80,6 +80,9 @@ alias dcu='devcontainer up'
 alias dcur='devcontainer up --remove-existing-container --build-no-cache'
 alias dcec='devcontainer exec claude'
 
+# atuin -----------------------------------------------------
+eval "$(atuin init zsh)"
+
 # Added by LM Studio CLI (lms) -----------------------------------------------------
 export PATH="$PATH:/Users/martin/.cache/lm-studio/bin"
 export PATH="$PATH:/Users/martin/.lmstudio/bin"
