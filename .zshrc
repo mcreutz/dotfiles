@@ -91,11 +91,16 @@ export PATH="$PATH:/Users/martin/.lmstudio/bin"
 eval "$(starship init zsh)"  # should be at the end of the file
 
 # Added by bun -----------------------------------------------------
-# completions
-[ -s "/Users/martin/.bun/_bun" ] && source "/Users/martin/.bun/_bun"
-
-# path
+# completions (if present)
 if [ -d "$HOME/.bun" ]; then
   export BUN_INSTALL="$HOME/.bun"
-  export PATH="$BUN_INSTALL/bin:$PATH"
+
+  # Add Bun to PATH
+  case ":$PATH:" in
+    *":$BUN_INSTALL/bin:"*) ;;
+    *) export PATH="$BUN_INSTALL/bin:$PATH" ;;
+  esac
+
+  # Bun completions
+  [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 fi
