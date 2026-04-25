@@ -78,7 +78,8 @@ alias gs='git switch $(git branch | fzf)'
 # devcontainers -----------------------------------------------------
 alias dcu='devcontainer up'
 alias dcur='devcontainer up --remove-existing-container --build-no-cache'
-alias dcec='devcontainer exec claude'
+alias dceb='devcontainer exec bash'
+alias dcec='devcontainer exec claude --dangerously-skip-permissions'
 
 # atuin -----------------------------------------------------
 eval "$(atuin init zsh)"
