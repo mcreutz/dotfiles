@@ -88,9 +88,6 @@ eval "$(atuin init zsh)"
 export PATH="$PATH:/Users/martin/.cache/lm-studio/bin"
 export PATH="$PATH:/Users/martin/.lmstudio/bin"
 
-# Starship -----------------------------------------------------
-eval "$(starship init zsh)"  # should be at the end of the file
-
 # Added by bun -----------------------------------------------------
 # completions (if present)
 if [ -d "$HOME/.bun" ]; then
@@ -105,3 +102,13 @@ if [ -d "$HOME/.bun" ]; then
   # Bun completions
   [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 fi
+
+# Docker ------------------------------------------------------
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/martin/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# Starship -----------------------------------------------------
+eval "$(starship init zsh)"  # should be at the end of the file
