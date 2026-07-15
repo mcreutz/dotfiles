@@ -76,11 +76,25 @@ alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"
 alias gs='git switch $(git branch | fzf)'
 
 # devcontainers -----------------------------------------------------
-alias dcu='devcontainer up'
-alias dcur='devcontainer up --remove-existing-container --build-no-cache'
-alias dceb='devcontainer exec bash'
-alias dcec='devcontainer exec claude agents --dangerously-skip-permissions'
-alias dceo='devcontainer exec opencode'
+# devcontainers -----------------------------------------------------
+# start (or reuse) container, run a command in it, stop container on exit.
+# pass -r/--rebuild as the first arg to force a clean rebuild
+# (remove existing container, no build cache).
+_dc() {
+  local up_args=()
+  case "$1" in
+    -r|--rebuild) up_args=(--remove-existing-container --build-no-cache); shift ;;
+  esac
+  devcontainer up "${up_args[@]}" || return 1
+  local id
+  id=$(docker ps -q --filter "label=devcontainer.local_folder=$PWD" | head -n1)
+  [ -n "$id" ] || { echo "no devcontainer running for $PWD" >&2; return 1; }
+  devcontainer exec "$@"
+  docker stop "$id"
+}
+dcb()  { _dc "$@" bash; }                                        # shell into bash
+dccc() { _dc "$@" claude agents --dangerously-skip-permissions; } # run claude
+dcoc() { _dc "$@" opencode; }                                    # run opencode
 
 # atuin -----------------------------------------------------
 eval "$(atuin init zsh)"
