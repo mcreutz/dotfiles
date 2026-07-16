@@ -76,7 +76,9 @@ alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"
 alias gs='git switch $(git branch | fzf)'
 
 # devcontainers -----------------------------------------------------
-# devcontainers -----------------------------------------------------
+# Path to the central agents-playground checkout that provides shared skills.
+export AGENTS_PLAYGROUND_DIR="$HOME/git/agents-playground"
+
 # start (or reuse) container, run a command in it, stop container on exit.
 # pass -r/--rebuild as the first arg to force a clean rebuild
 # (remove existing container, no build cache).
@@ -94,7 +96,7 @@ _dc() {
 }
 dcb()  { _dc "$@" bash; }                                        # shell into bash
 dccc() { _dc "$@" claude agents --dangerously-skip-permissions; } # run claude
-dcoc() { _dc "$@" opencode; }                                    # run opencode
+dcoc() { _dc "$@" opencode; }                                    # run opencode                                  # run opencode
 
 # atuin -----------------------------------------------------
 eval "$(atuin init zsh)"
