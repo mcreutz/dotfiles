@@ -96,7 +96,8 @@ _dc() {
 }
 dcb()  { _dc "$@" bash; }                                        # shell into bash
 dccc() { _dc "$@" claude agents --dangerously-skip-permissions; } # run claude
-dcoc() { _dc "$@" opencode; }                                    # run opencode                                  # run opencode
+dcoc() { _dc "$@" opencode; }                                    # run opencode
+dccx() { _dc "$@" codex --dangerously-bypass-approvals-and-sandbox; } # run codex
 
 # atuin -----------------------------------------------------
 eval "$(atuin init zsh)"
