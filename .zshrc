@@ -76,10 +76,8 @@ alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"
 alias gs='git switch $(git branch | fzf)'
 
 # devcontainers -----------------------------------------------------
-# Path to the central agents-playground checkout that provides shared skills.
-export AGENTS_PLAYGROUND_DIR="$HOME/git/agents-playground"
-
-# start (or reuse) container, run a command in it, stop container on exit.
+# start (or reuse) container, run a command in it, and stop the container when
+# the last devcontainer/docker exec session exits.
 # pass -r/--rebuild as the first arg to force a clean rebuild
 # (remove existing container, no build cache).
 _dc() {
@@ -92,7 +90,9 @@ _dc() {
   id=$(docker ps -q --filter "label=devcontainer.local_folder=$PWD" | head -n1)
   [ -n "$id" ] || { echo "no devcontainer running for $PWD" >&2; return 1; }
   devcontainer exec "$@"
-  docker stop "$id"
+  if [ "$(docker inspect --format '{{len .ExecIDs}}' "$id")" -eq 0 ]; then
+    docker stop "$id"
+  fi
 }
 dcb()  { _dc "$@" bash; }                                        # shell into bash
 dccc() { _dc "$@" claude agents --dangerously-skip-permissions; } # run claude
