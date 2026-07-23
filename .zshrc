@@ -76,24 +76,31 @@ alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"
 alias gs='git switch $(git branch | fzf)'
 
 # devcontainers -----------------------------------------------------
-# start (or reuse) container, run a command in it, and stop the container when
-# the last devcontainer/docker exec session exits.
-# pass -r/--rebuild as the first arg to force a clean rebuild
-# (remove existing container, no build cache).
 _dc() {
-  local up_args=()
+  # Parse -r/--rebuild.
+  local build_args=() up_args=()
   case "$1" in
-    -r|--rebuild) up_args=(--remove-existing-container --build-no-cache); shift ;;
+    -r|--rebuild) build_args=(--no-cache); up_args=(--remove-existing-container); shift ;;
   esac
+
+  # Merge config, build the base image, and start the repo container.
+  jq -s '.[0] as $base | .[1] as $repo | $base * $repo
+    | .mounts = ($base.mounts + $repo.mounts)' \
+    <(sed '/^[[:space:]]*\/\//d' .devcontainer/devcontainer.base.jsonc) \
+    <(sed '/^[[:space:]]*\/\//d' .devcontainer/devcontainer.repo.jsonc) \
+    > .devcontainer/devcontainer.json || return 1
+  docker build "${build_args[@]}" -f .devcontainer/Dockerfile.base -t agents-devcontainer:latest . || return 1
   devcontainer up "${up_args[@]}" || return 1
-  local id
-  id=$(docker ps -q --filter "label=devcontainer.local_folder=$PWD" | head -n1)
+
+  # Execute the command and stop after the final exec session exits.
+  local id=$(docker ps -q --filter "label=devcontainer.local_folder=$PWD" | head -n1)
   [ -n "$id" ] || { echo "no devcontainer running for $PWD" >&2; return 1; }
   devcontainer exec "$@"
   if [ "$(docker inspect --format '{{len .ExecIDs}}' "$id")" -eq 0 ]; then
     docker stop "$id"
   fi
 }
+
 dcb()  { _dc "$@" bash; }                                        # shell into bash
 dccc() { _dc "$@" claude agents --dangerously-skip-permissions; } # run claude
 dcoc() { _dc "$@" opencode; }                                    # run opencode
