@@ -76,11 +76,15 @@ alias ple="ls ~/Library/Caches/pypoetry/virtualenvs"
 alias gs='git switch $(git branch | fzf)'
 
 # devcontainers -----------------------------------------------------
+# Path of GitHub clones dir on this machine; the devcontainer mounts own skills from it. Different on private and work machines.
+export GH_CLONES_DIR=$HOME/git
+[ -d "$GH_CLONES_DIR" ] || GH_CLONES_DIR=$HOME/devel/github
+
 _dc() {
   # Parse -r/--rebuild.
   local build_args=() up_args=()
   case "$1" in
-    -r|--rebuild) build_args=(--no-cache); up_args=(--remove-existing-container); shift ;;
+    -r|--rebuild) build_args=(); up_args=(--remove-existing-container); shift ;;
   esac
 
   # Merge config, build the base image, and start the repo container.
@@ -91,20 +95,12 @@ _dc() {
     > .devcontainer/devcontainer.json || return 1
   docker build "${build_args[@]}" -f .devcontainer/Dockerfile.base -t agents-devcontainer:latest . || return 1
   devcontainer up "${up_args[@]}" || return 1
-
-  # Execute the command and stop after the final exec session exits.
-  local id=$(docker ps -q --filter "label=devcontainer.local_folder=$PWD" | head -n1)
-  [ -n "$id" ] || { echo "no devcontainer running for $PWD" >&2; return 1; }
   devcontainer exec "$@"
-  if [ "$(docker inspect --format '{{len .ExecIDs}}' "$id")" -eq 0 ]; then
-    docker stop "$id"
-  fi
 }
 
-dcb()  { _dc "$@" bash; }                                        # shell into bash
-dccc() { _dc "$@" claude agents --dangerously-skip-permissions; } # run claude
-dcoc() { _dc "$@" opencode; }                                    # run opencode
-dccx() { _dc "$@" codex --dangerously-bypass-approvals-and-sandbox; } # run codex
+dcb()  { _dc "$@" bash; }                                  # shell into bash
+dccc() { _dc "$@" claude --dangerously-skip-permissions; } # run claude
+dcoc() { _dc "$@" opencode; }                              # run OpenCode
 
 # atuin -----------------------------------------------------
 eval "$(atuin init zsh)"
