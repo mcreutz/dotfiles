@@ -100,6 +100,10 @@ _dc() {
 
 dcb()  { _dc "$@" bash; }                                  # shell into bash
 dccc() { _dc "$@" claude --dangerously-skip-permissions; } # run claude
+dccx() {                                                   # run Codex
+  _dc "$@" env TERM=xterm-256color COLORTERM=truecolor \
+    codex --dangerously-bypass-approvals-and-sandbox
+}
 dcoc() { _dc "$@" opencode; }                              # run OpenCode
 
 # atuin -----------------------------------------------------
