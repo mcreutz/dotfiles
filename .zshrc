@@ -56,7 +56,7 @@ alias knu="kubectl config set-context --current --namespace=\"\""  # unset
 
 # Brew ----------------------------------------------------
 # update and upgrade
-alias buu='brew update && brew upgrade && brew autoremove && brew cleanup'
+alias buu='brew update && brew upgrade && brew autoremove && brew cleanup --prune=all'
 
 # Bat -----------------------------------------------------
 export BAT_THEME="Dracula"
